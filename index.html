@@ -3,10 +3,38 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>KAVA TOUR 株式会社 | 福岡発・旅のプロフェッショナル</title>
+  <title>KAVA TOUR 株式会社</title>
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body { font-family: 'Hiragino Kaku Gothic ProN', 'Meiryo', 'Arial', sans-serif; color: #333; }
+
+    /* ===== 언어 바 ===== */
+    .lang-bar {
+      background: #0f1a33;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      padding: 6px 20px;
+      gap: 4px;
+    }
+    .lang-bar span {
+      color: rgba(255,255,255,0.4);
+      font-size: 11px;
+      margin-right: 4px;
+    }
+    .lang-btn {
+      background: transparent;
+      border: 1px solid rgba(255,255,255,0.25);
+      color: rgba(255,255,255,0.6);
+      font-size: 11px;
+      padding: 3px 10px;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: all 0.2s;
+      font-family: inherit;
+    }
+    .lang-btn:hover { border-color: #f5c842; color: #f5c842; }
+    .lang-btn.active { background: #f5c842; color: #0f1a33; border-color: #f5c842; font-weight: bold; }
 
     /* ===== ナビ ===== */
     nav {
@@ -15,250 +43,84 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
+      height: 56px;
       position: sticky;
       top: 0;
       z-index: 100;
-      height: 56px;
     }
-    nav .logo {
-      color: #f5c842;
-      font-size: 15px;
-      font-weight: bold;
-      white-space: nowrap;
-      line-height: 1.2;
-    }
-    nav .logo small {
-      color: rgba(255,255,255,0.5);
-      font-size: 10px;
-      display: block;
-      font-weight: normal;
-    }
-    /* ハンバーガーメニュー（モバイル） */
-    .hamburger {
-      display: none;
-      flex-direction: column;
-      gap: 5px;
-      cursor: pointer;
-      padding: 4px;
-    }
-    .hamburger span {
-      display: block;
-      width: 24px;
-      height: 2px;
-      background: white;
-      border-radius: 2px;
-    }
-    nav ul {
-      list-style: none;
-      display: flex;
-      gap: 24px;
-    }
-    nav ul li a {
-      color: #ccc;
-      text-decoration: none;
-      font-size: 13px;
-      transition: color 0.3s;
-      white-space: nowrap;
-    }
+    nav .logo { color: #f5c842; font-size: 15px; font-weight: bold; white-space: nowrap; line-height: 1.2; }
+    nav .logo small { color: rgba(255,255,255,0.45); font-size: 10px; display: block; font-weight: normal; }
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; background: none; border: none; }
+    .hamburger span { display: block; width: 24px; height: 2px; background: white; border-radius: 2px; }
+    nav ul { list-style: none; display: flex; gap: 24px; }
+    nav ul li a { color: #ccc; text-decoration: none; font-size: 13px; white-space: nowrap; }
     nav ul li a:hover { color: #f5c842; }
 
-    /* モバイルナビ */
     @media (max-width: 600px) {
       .hamburger { display: flex; }
       nav ul {
-        display: none;
-        position: absolute;
-        top: 56px;
-        left: 0;
-        right: 0;
-        background: #1a2744;
-        flex-direction: column;
-        padding: 16px 20px;
-        gap: 0;
+        display: none; position: absolute; top: 56px; left: 0; right: 0;
+        background: #1a2744; flex-direction: column; padding: 16px 20px; gap: 0;
         border-top: 1px solid rgba(255,255,255,0.1);
       }
       nav ul.open { display: flex; }
-      nav ul li a {
-        display: block;
-        padding: 12px 0;
-        font-size: 15px;
-        border-bottom: 1px solid rgba(255,255,255,0.07);
-        color: white;
-      }
+      nav ul li a { display: block; padding: 12px 0; font-size: 15px; border-bottom: 1px solid rgba(255,255,255,0.07); color: white; }
     }
 
     /* ===== ヒーロー ===== */
     .hero {
       background: linear-gradient(135deg, #1a2744 0%, #2c4a8c 50%, #1a6b8a 100%);
-      color: white;
-      text-align: center;
-      padding: 80px 24px 70px;
+      color: white; text-align: center; padding: 80px 24px 70px;
     }
-    .hero .tag {
-      display: inline-block;
-      background: #f5c842;
-      color: #1a2744;
-      font-size: 11px;
-      font-weight: bold;
-      padding: 4px 14px;
-      border-radius: 20px;
-      margin-bottom: 20px;
-      letter-spacing: 1px;
-    }
-    .hero h1 {
-      font-size: 36px;
-      font-weight: 900;
-      margin-bottom: 18px;
-      line-height: 1.4;
-    }
+    .hero .tag { display: inline-block; background: #f5c842; color: #1a2744; font-size: 11px; font-weight: bold; padding: 4px 14px; border-radius: 20px; margin-bottom: 20px; letter-spacing: 1px; }
+    .hero h1 { font-size: 36px; font-weight: 900; margin-bottom: 18px; line-height: 1.4; }
     .hero h1 span { color: #f5c842; }
-    .hero p {
-      font-size: 15px;
-      color: #b0c4de;
-      max-width: 520px;
-      margin: 0 auto 36px;
-      line-height: 1.9;
-    }
-    .hero .btns {
-      display: flex;
-      gap: 12px;
-      justify-content: center;
-      flex-wrap: wrap;
-    }
-    .hero .btn-primary {
-      background: #f5c842;
-      color: #1a2744;
-      padding: 13px 32px;
-      border-radius: 30px;
-      font-size: 15px;
-      font-weight: bold;
-      text-decoration: none;
-    }
-    .hero .btn-outline {
-      background: transparent;
-      color: white;
-      border: 2px solid rgba(255,255,255,0.5);
-      padding: 11px 32px;
-      border-radius: 30px;
-      font-size: 15px;
-      text-decoration: none;
-    }
+    .hero p { font-size: 15px; color: #b0c4de; max-width: 520px; margin: 0 auto 36px; line-height: 1.9; }
+    .hero .btns { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+    .hero .btn-primary { background: #f5c842; color: #1a2744; padding: 13px 32px; border-radius: 30px; font-size: 15px; font-weight: bold; text-decoration: none; }
+    .hero .btn-outline { background: transparent; color: white; border: 2px solid rgba(255,255,255,0.5); padding: 11px 32px; border-radius: 30px; font-size: 15px; text-decoration: none; }
 
     /* ===== 特徴バナー ===== */
-    .features-bar {
-      background: #f5c842;
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-    }
-    .features-bar .feat {
-      padding: 16px 8px;
-      text-align: center;
-      color: #1a2744;
-      font-weight: bold;
-      font-size: 12px;
-      border-right: 1px solid rgba(26,39,68,0.15);
-    }
+    .features-bar { background: #f5c842; display: grid; grid-template-columns: repeat(4, 1fr); }
+    .features-bar .feat { padding: 16px 8px; text-align: center; color: #1a2744; font-weight: bold; font-size: 12px; border-right: 1px solid rgba(26,39,68,0.15); }
     .features-bar .feat:last-child { border-right: none; }
-    .features-bar .feat .num {
-      font-size: 22px;
-      font-weight: 900;
-      display: block;
-      margin-bottom: 2px;
-    }
+    .features-bar .feat .num { font-size: 22px; font-weight: 900; display: block; margin-bottom: 2px; }
     @media (max-width: 600px) {
       .features-bar { grid-template-columns: repeat(2, 1fr); }
       .features-bar .feat:nth-child(2) { border-right: none; }
-      .features-bar .feat:nth-child(1),
-      .features-bar .feat:nth-child(2) {
-        border-bottom: 1px solid rgba(26,39,68,0.15);
-      }
+      .features-bar .feat:nth-child(1), .features-bar .feat:nth-child(2) { border-bottom: 1px solid rgba(26,39,68,0.15); }
     }
 
+    /* ===== セクション共通 ===== */
+    .section-label { color: #2c4a8c; font-size: 11px; font-weight: bold; letter-spacing: 3px; margin-bottom: 10px; }
+
     /* ===== 会社概要 ===== */
-    .about {
-      padding: 64px 24px;
-      max-width: 800px;
-      margin: 0 auto;
-      text-align: center;
-    }
-    .section-label {
-      color: #2c4a8c;
-      font-size: 11px;
-      font-weight: bold;
-      letter-spacing: 3px;
-      margin-bottom: 10px;
-    }
+    .about { padding: 64px 24px; max-width: 800px; margin: 0 auto; text-align: center; }
     .about h2 { font-size: 28px; margin-bottom: 20px; color: #1a2744; }
     .about p { font-size: 15px; color: #555; line-height: 2; }
 
     /* ===== サービス ===== */
-    .services {
-      background: #f0f4fa;
-      padding: 64px 24px;
-      text-align: center;
-    }
+    .services { background: #f0f4fa; padding: 64px 24px; text-align: center; }
     .services h2 { font-size: 28px; margin-bottom: 36px; color: #1a2744; }
-    .cards {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 16px;
-      max-width: 700px;
-      margin: 0 auto;
-    }
-    @media (max-width: 480px) {
-      .cards { grid-template-columns: 1fr; }
-    }
-    .card {
-      background: white;
-      border-radius: 14px;
-      padding: 28px 20px;
-      box-shadow: 0 2px 12px rgba(26,39,68,0.08);
-      border-top: 4px solid #2c4a8c;
-      text-align: center;
-    }
+    .cards { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; max-width: 700px; margin: 0 auto; }
+    @media (max-width: 480px) { .cards { grid-template-columns: 1fr; } }
+    .card { background: white; border-radius: 14px; padding: 28px 20px; box-shadow: 0 2px 12px rgba(26,39,68,0.08); border-top: 4px solid #2c4a8c; text-align: center; }
     .card .icon { font-size: 38px; margin-bottom: 12px; }
     .card h3 { font-size: 16px; margin-bottom: 8px; color: #1a2744; font-weight: bold; }
     .card p { font-size: 13px; color: #666; line-height: 1.7; }
 
     /* ===== アクセス ===== */
-    .access {
-      padding: 64px 24px;
-      text-align: center;
-    }
+    .access { padding: 64px 24px; text-align: center; }
     .access h2 { font-size: 28px; margin-bottom: 32px; color: #1a2744; }
-    .access-box {
-      background: #f0f4fa;
-      border-radius: 14px;
-      padding: 28px 24px;
-      max-width: 560px;
-      margin: 0 auto;
-      text-align: left;
-    }
-    .access-box .row {
-      display: flex;
-      gap: 12px;
-      padding: 12px 0;
-      border-bottom: 1px solid rgba(26,39,68,0.08);
-      align-items: flex-start;
-    }
+    .access-box { background: #f0f4fa; border-radius: 14px; padding: 28px 24px; max-width: 560px; margin: 0 auto; text-align: left; }
+    .access-box .row { display: flex; gap: 12px; padding: 12px 0; border-bottom: 1px solid rgba(26,39,68,0.08); align-items: flex-start; }
     .access-box .row:last-child { border-bottom: none; padding-bottom: 0; }
     .access-box .row:first-child { padding-top: 0; }
-    .access-box .label {
-      color: #2c4a8c;
-      font-weight: bold;
-      font-size: 13px;
-      min-width: 56px;
-      padding-top: 2px;
-    }
+    .access-box .label { color: #2c4a8c; font-weight: bold; font-size: 13px; min-width: 56px; padding-top: 2px; }
     .access-box .val { font-size: 14px; color: #444; line-height: 1.7; }
 
     /* ===== お問い合わせ ===== */
-    .contact {
-      padding: 64px 24px;
-      text-align: center;
-      background: #1a2744;
-      color: white;
-    }
+    .contact { padding: 64px 24px; text-align: center; background: #1a2744; color: white; }
     .contact h2 { font-size: 28px; margin-bottom: 10px; }
     .contact .sub { font-size: 14px; color: #b0c4de; margin-bottom: 28px; }
     .contact .tel { font-size: 32px; font-weight: 900; color: #f5c842; letter-spacing: 1px; margin-bottom: 6px; }
@@ -267,17 +129,19 @@
     .contact .mail { font-size: 14px; color: #b0c4de; line-height: 1.8; }
 
     /* ===== フッター ===== */
-    footer {
-      background: #0d1428;
-      color: #555;
-      text-align: center;
-      padding: 20px;
-      font-size: 12px;
-    }
+    footer { background: #0d1428; color: #555; text-align: center; padding: 20px; font-size: 12px; }
     footer span { color: #8a9ab5; }
   </style>
 </head>
 <body>
+
+  <!-- 言語切替バー -->
+  <div class="lang-bar">
+    <span>Language:</span>
+    <button class="lang-btn active" onclick="setLang('ja')">日本語</button>
+    <button class="lang-btn" onclick="setLang('zh')">中文</button>
+    <button class="lang-btn" onclick="setLang('en')">English</button>
+  </div>
 
   <!-- ナビ -->
   <nav>
@@ -285,67 +149,69 @@
       KAVA TOUR 株式会社
       <small>KAVA TOUR Co., Ltd.</small>
     </div>
-    <div class="hamburger" onclick="this.nextElementSibling.classList.toggle('open')">
+    <button class="hamburger" onclick="document.querySelector('nav ul').classList.toggle('open')">
       <span></span><span></span><span></span>
-    </div>
+    </button>
     <ul>
-      <li><a href="#about">会社概要</a></li>
-      <li><a href="#services">サービス</a></li>
-      <li><a href="#access">アクセス</a></li>
-      <li><a href="#contact">お問い合わせ</a></li>
+      <li><a href="#about" data-ja="会社概要" data-zh="关于我们" data-en="About">会社概要</a></li>
+      <li><a href="#services" data-ja="サービス" data-zh="服务内容" data-en="Services">サービス</a></li>
+      <li><a href="#access" data-ja="アクセス" data-zh="交通信息" data-en="Access">アクセス</a></li>
+      <li><a href="#contact" data-ja="お問い合わせ" data-zh="联系我们" data-en="Contact">お問い合わせ</a></li>
     </ul>
   </nav>
 
   <!-- ヒーロー -->
   <section class="hero">
-    <div class="tag">福岡発・旅のプロフェッショナル</div>
-    <h1>あなたの旅を、<br><span>特別な体験</span>に。</h1>
-    <p>KAVA TOURは福岡を拠点に、国内・海外のツアー手配からインバウンド対応まで、旅のすべてをサポートします。</p>
+    <div class="tag" data-ja="福岡発・旅のプロフェッショナル" data-zh="福冈出发·旅行专家" data-en="Fukuoka-based Travel Professionals">福岡発・旅のプロフェッショナル</div>
+    <h1 data-ja="あなたの旅を、<br><span>特別な体験</span>に。" data-zh="让您的旅行，<br>成为<span>特别的体验</span>。" data-en="Make Your Journey<br>a <span>Special Experience</span>.">あなたの旅を、<br><span>特別な体験</span>に。</h1>
+    <p data-ja="KAVA TOURは福岡を拠点に、国内・海外のツアー手配からインバウンド対応まで、旅のすべてをサポートします。" data-zh="KAVA TOUR以福冈为据点，从国内外旅游预订到入境旅游服务，全方位支持您的旅行。" data-en="Based in Fukuoka, KAVA TOUR supports all aspects of travel — from domestic and international tours to inbound tourism services.">KAVA TOURは福岡を拠点に、国内・海外のツアー手配からインバウンド対応まで、旅のすべてをサポートします。</p>
     <div class="btns">
-      <a href="#services" class="btn-primary">サービスを見る</a>
-      <a href="#contact" class="btn-outline">お問い合わせ</a>
+      <a href="#services" class="btn-primary" data-ja="サービスを見る" data-zh="查看服务" data-en="Our Services">サービスを見る</a>
+      <a href="#contact" class="btn-outline" data-ja="お問い合わせ" data-zh="联系我们" data-en="Contact Us">お問い合わせ</a>
     </div>
   </section>
 
   <!-- 特徴バナー -->
   <div class="features-bar">
-    <div class="feat"><span class="num">2018</span>年設立</div>
-    <div class="feat"><span class="num">福岡</span>天神・大名エリア</div>
-    <div class="feat"><span class="num">国内外</span>ツアー対応</div>
-    <div class="feat"><span class="num">丁寧</span>なサポート</div>
+    <div class="feat"><span class="num">2018</span><span data-ja="年設立" data-zh="年创立" data-en="Founded">年設立</span></div>
+    <div class="feat"><span class="num">福岡</span><span data-ja="天神・大名エリア" data-zh="天神·大名地区" data-en="Tenjin / Daimyo Area">天神・大名エリア</span></div>
+    <div class="feat"><span class="num" data-ja="国内外" data-zh="国内外" data-en="Domestic &amp; Int'l">国内外</span><span data-ja="ツアー対応" data-zh="旅游服务" data-en="Tour Support">ツアー対応</span></div>
+    <div class="feat"><span class="num" data-ja="丁寧" data-zh="贴心" data-en="Careful">丁寧</span><span data-ja="なサポート" data-zh="周到服务" data-en="Support">なサポート</span></div>
   </div>
 
   <!-- 会社概要 -->
   <section class="about" id="about">
     <div class="section-label">ABOUT US</div>
-    <h2>私たちについて</h2>
-    <p>KAVA TOUR株式会社は、2018年に福岡市中央区大名にて設立した旅行代理店です。福岡の魅力を国内外に発信しながら、お客様一人ひとりに合ったオリジナルの旅をご提案します。国内旅行から海外ツアー、インバウンド向けの訪日旅行サポートまで、旅のプロフェッショナルとして幅広くお応えします。</p>
+    <h2 data-ja="私たちについて" data-zh="关于我们" data-en="About Us">私たちについて</h2>
+    <p data-ja="KAVA TOUR株式会社は、2018年に福岡市中央区大名にて設立した旅行代理店です。福岡の魅力を国内外に発信しながら、お客様一人ひとりに合ったオリジナルの旅をご提案します。国内旅行から海外ツアー、インバウンド向けの訪日旅行サポートまで、旅のプロフェッショナルとして幅広くお応えします。"
+       data-zh="KAVA TOUR株式会社于2018年在福冈市中央区大名创立，是一家旅行代理公司。我们致力于向国内外传播福冈的魅力，为每一位客户量身定制独特的旅行方案。从国内旅游到海外游览，从入境旅游支持到团体旅行策划，我们以专业的旅游服务满足您的多样需求。"
+       data-en="KAVA TOUR Co., Ltd. was established in 2018 in Daimyo, Chuo Ward, Fukuoka City. We share the charm of Fukuoka with travelers from around the world and craft personalized travel experiences for every guest. From domestic trips to international tours and inbound tourism support, our team of travel professionals is here for you.">KAVA TOUR株式会社は、2018年に福岡市中央区大名にて設立した旅行代理店です。福岡の魅力を国内外に発信しながら、お客様一人ひとりに合ったオリジナルの旅をご提案します。国内旅行から海外ツアー、インバウンド向けの訪日旅行サポートまで、旅のプロフェッショナルとして幅広くお応えします。</p>
   </section>
 
   <!-- サービス -->
   <section class="services" id="services">
     <div class="section-label">OUR SERVICES</div>
-    <h2>サービス内容</h2>
+    <h2 data-ja="サービス内容" data-zh="服务内容" data-en="Our Services">サービス内容</h2>
     <div class="cards">
       <div class="card">
         <div class="icon">🗾</div>
-        <h3>国内ツアー</h3>
-        <p>九州各地をはじめ、全国各地へのツアーをご手配します。</p>
+        <h3 data-ja="国内ツアー" data-zh="国内旅游" data-en="Domestic Tours">国内ツアー</h3>
+        <p data-ja="九州各地をはじめ、全国各地へのツアーをご手配します。" data-zh="从九州各地出发，为您安排全国各地的旅行。" data-en="We arrange tours across Japan, starting from Kyushu and beyond.">九州各地をはじめ、全国各地へのツアーをご手配します。</p>
       </div>
       <div class="card">
         <div class="icon">✈️</div>
-        <h3>海外ツアー</h3>
-        <p>アジア・ヨーロッパなど、海外旅行のプランニングから手配まで。</p>
+        <h3 data-ja="海外ツアー" data-zh="海外旅游" data-en="International Tours">海外ツアー</h3>
+        <p data-ja="アジア・ヨーロッパなど、海外旅行のプランニングから手配まで。" data-zh="亚洲、欧洲等地的海外旅行，从规划到预订一站式服务。" data-en="From planning to booking — covering Asia, Europe, and beyond.">アジア・ヨーロッパなど、海外旅行のプランニングから手配まで。</p>
       </div>
       <div class="card">
         <div class="icon">🗼</div>
-        <h3>インバウンド</h3>
-        <p>訪日外国人向けの旅行手配・通訳・観光サポートに対応。</p>
+        <h3 data-ja="インバウンド" data-zh="入境旅游" data-en="Inbound Tourism">インバウンド</h3>
+        <p data-ja="訪日外国人向けの旅行手配・通訳・観光サポートに対応。" data-zh="为访日外国人提供旅行预订、翻译及观光支持服务。" data-en="Travel arrangements, interpretation, and sightseeing support for foreign visitors to Japan.">訪日外国人向けの旅行手配・通訳・観光サポートに対応。</p>
       </div>
       <div class="card">
         <div class="icon">🏢</div>
-        <h3>法人・団体旅行</h3>
-        <p>企業の社員旅行や団体ツアーの企画・運営をお任せください。</p>
+        <h3 data-ja="法人・団体旅行" data-zh="企业/团体旅行" data-en="Corporate & Group Tours">法人・団体旅行</h3>
+        <p data-ja="企業の社員旅行や団体ツアーの企画・運営をお任せください。" data-zh="承接企业员工旅游及团体旅行的策划与运营。" data-en="Leave the planning and operation of company trips and group tours to us.">企業の社員旅行や団体ツアーの企画・運営をお任せください。</p>
       </div>
     </div>
   </section>
@@ -353,37 +219,37 @@
   <!-- アクセス -->
   <section class="access" id="access">
     <div class="section-label">ACCESS</div>
-    <h2>アクセス</h2>
+    <h2 data-ja="アクセス" data-zh="交通信息" data-en="Access">アクセス</h2>
     <div class="access-box">
       <div class="row">
-        <div class="label">会社名</div>
+        <div class="label" data-ja="会社名" data-zh="公司名" data-en="Company">会社名</div>
         <div class="val">KAVA TOUR 株式会社</div>
       </div>
       <div class="row">
-        <div class="label">住所</div>
-        <div class="val">福岡県福岡市中央区大名1丁目9番45号 藤和大名カープ504</div>
+        <div class="label" data-ja="住所" data-zh="地址" data-en="Address">住所</div>
+        <div class="val" data-ja="福岡県福岡市中央区大名1丁目9番45号 藤和大名カープ504" data-zh="日本福冈县福冈市中央区大名1丁目9番45号 藤和大名カープ504" data-en="Fujiwa Daimyo Carp 504, 1-9-45 Daimyo, Chuo-ku, Fukuoka City, Fukuoka, Japan">福岡県福岡市中央区大名1丁目9番45号 藤和大名カープ504</div>
       </div>
       <div class="row">
-        <div class="label">最寄駅</div>
-        <div class="val">地下鉄空港線「赤坂駅」出口1 徒歩約4分</div>
+        <div class="label" data-ja="最寄駅" data-zh="最近车站" data-en="Nearest Station">最寄駅</div>
+        <div class="val" data-ja="地下鉄空港線「赤坂駅」出口1 徒歩約4分" data-zh="地铁空港线「赤坂站」1号出口 步行约4分钟" data-en="Akasaka Station (Subway Airport Line), Exit 1 — approx. 4 min walk">地下鉄空港線「赤坂駅」出口1 徒歩約4分</div>
       </div>
       <div class="row">
-        <div class="label">電話</div>
+        <div class="label" data-ja="電話" data-zh="电话" data-en="Phone">電話</div>
         <div class="val">092-985-9168</div>
       </div>
       <div class="row">
-        <div class="label">設立</div>
-        <div class="val">2018年5月</div>
+        <div class="label" data-ja="設立" data-zh="创立" data-en="Founded">設立</div>
+        <div class="val" data-ja="2018年5月" data-zh="2018年5月" data-en="May 2018">2018年5月</div>
       </div>
     </div>
   </section>
 
   <!-- お問い合わせ -->
   <section class="contact" id="contact">
-    <h2>お問い合わせ</h2>
-    <div class="sub">旅のご相談・お見積もりはお気軽にどうぞ</div>
+    <h2 data-ja="お問い合わせ" data-zh="联系我们" data-en="Contact Us">お問い合わせ</h2>
+    <div class="sub" data-ja="旅のご相談・お見積もりはお気軽にどうぞ" data-zh="旅行咨询及报价，欢迎随时联系" data-en="Feel free to contact us for travel inquiries and quotes">旅のご相談・お見積もりはお気軽にどうぞ</div>
     <div class="tel">☎ 092-985-9168</div>
-    <div class="tel-note">受付時間：平日 10:00〜18:00</div>
+    <div class="tel-note" data-ja="受付時間：平日 10:00〜18:00" data-zh="接待时间：工作日 10:00〜18:00" data-en="Hours: Weekdays 10:00–18:00">受付時間：平日 10:00〜18:00</div>
     <div class="divider"></div>
     <div class="mail">📍 福岡市中央区大名1-9-45 藤和大名カープ504</div>
   </section>
@@ -393,5 +259,26 @@
     <p>© 2026 <span>KAVA TOUR 株式会社</span> All Rights Reserved.</p>
   </footer>
 
+  <script>
+    function setLang(lang) {
+      // ボタンのアクティブ状態を更新
+      document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
+      event.target.classList.add('active');
+
+      // data-{lang} を持つ全要素を更新
+      document.querySelectorAll('[data-' + lang + ']').forEach(el => {
+        const text = el.getAttribute('data-' + lang);
+        // innerHTML を使うタグ（span等を含む可能性がある要素）
+        if (el.tagName === 'H1' || el.tagName === 'P' || el.tagName === 'A' || el.tagName === 'DIV') {
+          el.innerHTML = text;
+        } else {
+          el.textContent = text;
+        }
+      });
+
+      // html lang 属性も更新
+      document.documentElement.lang = lang === 'zh' ? 'zh-CN' : lang;
+    }
+  </script>
 </body>
 </html>
