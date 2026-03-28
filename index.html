@@ -1,14 +1,16 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="ja">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>星河科技 | 专注未来</title>
+  <title>KAVA TOUR 株式会社 | 福岡発・旅のプロフェッショナル</title>
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { font-family: 'Arial', sans-serif; color: #333; }
+    body { font-family: 'Hiragino Kaku Gothic ProN', 'Meiryo', 'Arial', sans-serif; color: #333; }
+
+    /* ナビ */
     nav {
-      background: #0d1117;
+      background: #1a2744;
       padding: 16px 40px;
       display: flex;
       justify-content: space-between;
@@ -17,126 +19,290 @@
       top: 0;
       z-index: 100;
     }
-    nav .logo { color: #58a6ff; font-size: 22px; font-weight: bold; }
+    nav .logo { color: #f5c842; font-size: 20px; font-weight: bold; letter-spacing: 1px; }
+    nav .logo span { color: white; font-size: 13px; display: block; font-weight: normal; letter-spacing: 2px; }
     nav ul { list-style: none; display: flex; gap: 28px; }
-    nav ul li a { color: #ccc; text-decoration: none; font-size: 15px; transition: color 0.3s; }
-    nav ul li a:hover { color: #58a6ff; }
+    nav ul li a { color: #ccc; text-decoration: none; font-size: 14px; transition: color 0.3s; }
+    nav ul li a:hover { color: #f5c842; }
+
+    /* ヒーロー */
     .hero {
-      background: linear-gradient(135deg, #0d1117 0%, #161b22 50%, #1c2a4a 100%);
+      background: linear-gradient(135deg, #1a2744 0%, #2c4a8c 50%, #1a6b8a 100%);
       color: white;
       text-align: center;
-      padding: 100px 20px;
+      padding: 110px 20px 90px;
+      position: relative;
+      overflow: hidden;
     }
-    .hero h1 { font-size: 52px; font-weight: 800; margin-bottom: 20px; line-height: 1.2; }
-    .hero h1 span { color: #58a6ff; }
-    .hero p { font-size: 20px; color: #8b949e; max-width: 600px; margin: 0 auto 40px; line-height: 1.8; }
-    .hero .btn {
-      background: #58a6ff;
-      color: #0d1117;
-      padding: 14px 40px;
+    .hero::before {
+      content: '✈';
+      position: absolute;
+      font-size: 300px;
+      opacity: 0.04;
+      top: -40px;
+      right: -40px;
+    }
+    .hero .tag {
+      display: inline-block;
+      background: #f5c842;
+      color: #1a2744;
+      font-size: 12px;
+      font-weight: bold;
+      padding: 4px 14px;
+      border-radius: 20px;
+      margin-bottom: 20px;
+      letter-spacing: 2px;
+    }
+    .hero h1 { font-size: 46px; font-weight: 900; margin-bottom: 18px; line-height: 1.3; }
+    .hero h1 span { color: #f5c842; }
+    .hero p { font-size: 18px; color: #b0c4de; max-width: 580px; margin: 0 auto 40px; line-height: 1.9; }
+    .hero .btns { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+    .hero .btn-primary {
+      background: #f5c842;
+      color: #1a2744;
+      padding: 14px 38px;
       border-radius: 30px;
-      font-size: 17px;
+      font-size: 16px;
       font-weight: bold;
       text-decoration: none;
-      display: inline-block;
     }
+    .hero .btn-outline {
+      background: transparent;
+      color: white;
+      border: 2px solid rgba(255,255,255,0.5);
+      padding: 14px 38px;
+      border-radius: 30px;
+      font-size: 16px;
+      text-decoration: none;
+    }
+
+    /* 特徴バナー */
+    .features-bar {
+      background: #f5c842;
+      display: flex;
+      justify-content: center;
+      gap: 0;
+      flex-wrap: wrap;
+    }
+    .features-bar .feat {
+      padding: 18px 36px;
+      text-align: center;
+      color: #1a2744;
+      font-weight: bold;
+      font-size: 14px;
+      border-right: 1px solid rgba(26,39,68,0.15);
+    }
+    .features-bar .feat:last-child { border-right: none; }
+    .features-bar .feat .num { font-size: 26px; font-weight: 900; display: block; }
+
+    /* 会社概要 */
     .about {
       padding: 80px 40px;
-      max-width: 900px;
+      max-width: 860px;
       margin: 0 auto;
       text-align: center;
     }
-    .about h2 { font-size: 36px; margin-bottom: 20px; color: #0d1117; }
-    .about p { font-size: 17px; color: #555; line-height: 1.9; }
+    .section-label { color: #2c4a8c; font-size: 12px; font-weight: bold; letter-spacing: 3px; margin-bottom: 10px; }
+    .about h2 { font-size: 34px; margin-bottom: 24px; color: #1a2744; }
+    .about p { font-size: 16px; color: #555; line-height: 2; }
+
+    /* サービス */
     .services {
-      background: #f6f8fa;
+      background: #f0f4fa;
       padding: 80px 40px;
       text-align: center;
     }
-    .services h2 { font-size: 36px; margin-bottom: 50px; color: #0d1117; }
+    .services h2 { font-size: 34px; margin-bottom: 50px; color: #1a2744; }
     .cards {
       display: flex;
-      gap: 30px;
+      gap: 24px;
       justify-content: center;
       flex-wrap: wrap;
-      max-width: 1000px;
+      max-width: 1050px;
       margin: 0 auto;
     }
     .card {
       background: white;
       border-radius: 16px;
-      padding: 40px 30px;
-      width: 260px;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
-      transition: transform 0.3s;
+      padding: 36px 28px;
+      width: 230px;
+      box-shadow: 0 4px 20px rgba(26,39,68,0.08);
+      transition: transform 0.3s, box-shadow 0.3s;
+      border-top: 4px solid #2c4a8c;
     }
-    .card:hover { transform: translateY(-6px); }
-    .card .icon { font-size: 48px; margin-bottom: 16px; }
-    .card h3 { font-size: 20px; margin-bottom: 12px; color: #0d1117; }
-    .card p { font-size: 14px; color: #666; line-height: 1.7; }
+    .card:hover { transform: translateY(-6px); box-shadow: 0 12px 30px rgba(26,39,68,0.15); }
+    .card .icon { font-size: 44px; margin-bottom: 14px; }
+    .card h3 { font-size: 17px; margin-bottom: 10px; color: #1a2744; font-weight: bold; }
+    .card p { font-size: 13px; color: #666; line-height: 1.8; }
+
+    /* アクセス */
+    .access {
+      padding: 80px 40px;
+      text-align: center;
+      background: white;
+    }
+    .access h2 { font-size: 34px; margin-bottom: 40px; color: #1a2744; }
+    .access-box {
+      background: #f0f4fa;
+      border-radius: 16px;
+      padding: 40px;
+      max-width: 660px;
+      margin: 0 auto;
+      text-align: left;
+    }
+    .access-box .row { display: flex; gap: 16px; margin-bottom: 18px; align-items: flex-start; }
+    .access-box .row:last-child { margin-bottom: 0; }
+    .access-box .label { color: #2c4a8c; font-weight: bold; font-size: 14px; min-width: 80px; }
+    .access-box .val { font-size: 15px; color: #444; line-height: 1.7; }
+
+    /* お問い合わせ */
     .contact {
       padding: 80px 40px;
       text-align: center;
-      background: #0d1117;
+      background: #1a2744;
       color: white;
     }
-    .contact h2 { font-size: 36px; margin-bottom: 16px; }
-    .contact p { font-size: 17px; color: #8b949e; margin-bottom: 10px; }
+    .contact h2 { font-size: 34px; margin-bottom: 14px; }
+    .contact .sub { font-size: 16px; color: #b0c4de; margin-bottom: 36px; }
+    .contact .tel {
+      font-size: 38px;
+      font-weight: 900;
+      color: #f5c842;
+      letter-spacing: 2px;
+      margin-bottom: 8px;
+    }
+    .contact .tel-note { font-size: 13px; color: #8a9ab5; }
+    .contact .divider { width: 60px; height: 1px; background: rgba(255,255,255,0.2); margin: 30px auto; }
+    .contact .mail { font-size: 17px; color: #b0c4de; }
+
+    /* フッター */
     footer {
-      background: #010409;
+      background: #0d1428;
       color: #555;
       text-align: center;
       padding: 24px;
-      font-size: 14px;
+      font-size: 13px;
     }
+    footer span { color: #8a9ab5; }
   </style>
 </head>
 <body>
+
+  <!-- ナビ -->
   <nav>
-    <div class="logo">🚀 星河科技</div>
+    <div class="logo">
+      KAVA TOUR 株式会社
+      <span>KAVA TOUR Co., Ltd.</span>
+    </div>
     <ul>
-      <li><a href="#about">关于我们</a></li>
-      <li><a href="#services">服务</a></li>
-      <li><a href="#contact">联系</a></li>
+      <li><a href="#about">会社概要</a></li>
+      <li><a href="#services">サービス</a></li>
+      <li><a href="#access">アクセス</a></li>
+      <li><a href="#contact">お問い合わせ</a></li>
     </ul>
   </nav>
+
+  <!-- ヒーロー -->
   <section class="hero">
-    <h1>驱动未来的<span>科技力量</span></h1>
-    <p>星河科技致力于为企业提供前沿的数字化解决方案，让技术真正创造价值。</p>
-    <a href="#contact" class="btn">立即联系我们</a>
+    <div class="tag">福岡発・旅のプロフェッショナル</div>
+    <h1>あなたの旅を、<span>特別な体験</span>に。</h1>
+    <p>KAVA TOURは福岡を拠点に、国内・海外のツアー手配から<br>インバウンド対応まで、旅のすべてをサポートします。</p>
+    <div class="btns">
+      <a href="#services" class="btn-primary">サービスを見る</a>
+      <a href="#contact" class="btn-outline">お問い合わせ</a>
+    </div>
   </section>
+
+  <!-- 特徴バナー -->
+  <div class="features-bar">
+    <div class="feat"><span class="num">2018</span>年設立</div>
+    <div class="feat"><span class="num">福岡</span>天神・大名エリア</div>
+    <div class="feat"><span class="num">国内外</span>ツアー対応</div>
+    <div class="feat"><span class="num">丁寧</span>なサポート</div>
+  </div>
+
+  <!-- 会社概要 -->
   <section class="about" id="about">
-    <h2>关于我们</h2>
-    <p>星河科技成立于2020年，总部位于深圳。我们拥有一支充满热情的工程师团队，专注于人工智能、云计算和移动互联网领域，已服务超过200家企业客户，帮助他们实现数字化转型与业务增长。</p>
+    <div class="section-label">ABOUT US</div>
+    <h2>私たちについて</h2>
+    <p>
+      KAVA TOUR株式会社は、2018年に福岡市中央区大名にて設立した旅行代理店です。<br>
+      福岡の魅力を国内外に発信しながら、お客様一人ひとりに合ったオリジナルの旅をご提案します。<br>
+      国内旅行から海外ツアー、インバウンド向けの訪日旅行サポートまで、<br>
+      旅のプロフェッショナルとして幅広くお応えします。
+    </p>
   </section>
+
+  <!-- サービス -->
   <section class="services" id="services">
-    <h2>我们的服务</h2>
+    <div class="section-label">OUR SERVICES</div>
+    <h2>サービス内容</h2>
     <div class="cards">
       <div class="card">
-        <div class="icon">🤖</div>
-        <h3>AI 解决方案</h3>
-        <p>定制化人工智能模型，赋能业务流程自动化与智能决策。</p>
+        <div class="icon">🗾</div>
+        <h3>国内ツアー</h3>
+        <p>九州各地をはじめ、全国各地へのツアーをご手配します。</p>
       </div>
       <div class="card">
-        <div class="icon">☁️</div>
-        <h3>云端架构</h3>
-        <p>稳定、弹性的云服务架构，保障业务 7x24 小时高可用运行。</p>
+        <div class="icon">✈️</div>
+        <h3>海外ツアー</h3>
+        <p>アジア・ヨーロッパなど、海外旅行のプランニングから手配まで。</p>
       </div>
       <div class="card">
-        <div class="icon">📱</div>
-        <h3>移动开发</h3>
-        <p>iOS 和 Android 双端开发，打造流畅的用户体验。</p>
+        <div class="icon">🗼</div>
+        <h3>インバウンド</h3>
+        <p>訪日外国人向けの旅行手配・通訳・観光サポートに対応。</p>
+      </div>
+      <div class="card">
+        <div class="icon">🏢</div>
+        <h3>法人・団体旅行</h3>
+        <p>企業の社員旅行や団体ツアーの企画・運営をお任せください。</p>
       </div>
     </div>
   </section>
-  <section class="contact" id="contact">
-    <h2>联系我们</h2>
-    <p>📧 hello@xinghekeji.com</p>
-    <p>📍 深圳市南山区科技园 A 栋 8 楼</p>
-    <p>📞 400-888-0000</p>
+
+  <!-- アクセス -->
+  <section class="access" id="access">
+    <div class="section-label">ACCESS</div>
+    <h2>アクセス</h2>
+    <div class="access-box">
+      <div class="row">
+        <div class="label">会社名</div>
+        <div class="val">KAVA TOUR 株式会社</div>
+      </div>
+      <div class="row">
+        <div class="label">住所</div>
+        <div class="val">福岡県福岡市中央区大名1丁目9番45号<br>藤和大名カープ 504</div>
+      </div>
+      <div class="row">
+        <div class="label">最寄駅</div>
+        <div class="val">地下鉄空港線「赤坂駅」出口1 徒歩約4分</div>
+      </div>
+      <div class="row">
+        <div class="label">電話</div>
+        <div class="val">092-985-9168</div>
+      </div>
+      <div class="row">
+        <div class="label">設立</div>
+        <div class="val">2018年5月</div>
+      </div>
+    </div>
   </section>
+
+  <!-- お問い合わせ -->
+  <section class="contact" id="contact">
+    <h2>お問い合わせ</h2>
+    <div class="sub">旅のご相談・お見積もりはお気軽にどうぞ</div>
+    <div class="tel">☎ 092-985-9168</div>
+    <div class="tel-note">受付時間：平日 10:00〜18:00</div>
+    <div class="divider"></div>
+    <div class="mail">📍 福岡市中央区大名1-9-45 藤和大名カープ504</div>
+  </section>
+
+  <!-- フッター -->
   <footer>
-    <p>© 2026 星河科技 All Rights Reserved.</p>
+    <p>© 2026 <span>KAVA TOUR 株式会社</span> All Rights Reserved.</p>
   </footer>
+
 </body>
 </html>
