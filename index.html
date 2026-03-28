@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>星河科技 | 专注未来</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Arial', sans-serif; color: #333; }
+    nav {
+      background: #0d1117;
+      padding: 16px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    nav .logo { color: #58a6ff; font-size: 22px; font-weight: bold; }
+    nav ul { list-style: none; display: flex; gap: 28px; }
+    nav ul li a { color: #ccc; text-decoration: none; font-size: 15px; transition: color 0.3s; }
+    nav ul li a:hover { color: #58a6ff; }
+    .hero {
+      background: linear-gradient(135deg, #0d1117 0%, #161b22 50%, #1c2a4a 100%);
+      color: white;
+      text-align: center;
+      padding: 100px 20px;
+    }
+    .hero h1 { font-size: 52px; font-weight: 800; margin-bottom: 20px; line-height: 1.2; }
+    .hero h1 span { color: #58a6ff; }
+    .hero p { font-size: 20px; color: #8b949e; max-width: 600px; margin: 0 auto 40px; line-height: 1.8; }
+    .hero .btn {
+      background: #58a6ff;
+      color: #0d1117;
+      padding: 14px 40px;
+      border-radius: 30px;
+      font-size: 17px;
+      font-weight: bold;
+      text-decoration: none;
+      display: inline-block;
+    }
+    .about {
+      padding: 80px 40px;
+      max-width: 900px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    .about h2 { font-size: 36px; margin-bottom: 20px; color: #0d1117; }
+    .about p { font-size: 17px; color: #555; line-height: 1.9; }
+    .services {
+      background: #f6f8fa;
+      padding: 80px 40px;
+      text-align: center;
+    }
+    .services h2 { font-size: 36px; margin-bottom: 50px; color: #0d1117; }
+    .cards {
+      display: flex;
+      gap: 30px;
+      justify-content: center;
+      flex-wrap: wrap;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+    .card {
+      background: white;
+      border-radius: 16px;
+      padding: 40px 30px;
+      width: 260px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+      transition: transform 0.3s;
+    }
+    .card:hover { transform: translateY(-6px); }
+    .card .icon { font-size: 48px; margin-bottom: 16px; }
+    .card h3 { font-size: 20px; margin-bottom: 12px; color: #0d1117; }
+    .card p { font-size: 14px; color: #666; line-height: 1.7; }
+    .contact {
+      padding: 80px 40px;
+      text-align: center;
+      background: #0d1117;
+      color: white;
+    }
+    .contact h2 { font-size: 36px; margin-bottom: 16px; }
+    .contact p { font-size: 17px; color: #8b949e; margin-bottom: 10px; }
+    footer {
+      background: #010409;
+      color: #555;
+      text-align: center;
+      padding: 24px;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="logo">🚀 星河科技</div>
+    <ul>
+      <li><a href="#about">关于我们</a></li>
+      <li><a href="#services">服务</a></li>
+      <li><a href="#contact">联系</a></li>
+    </ul>
+  </nav>
+  <section class="hero">
+    <h1>驱动未来的<span>科技力量</span></h1>
+    <p>星河科技致力于为企业提供前沿的数字化解决方案，让技术真正创造价值。</p>
+    <a href="#contact" class="btn">立即联系我们</a>
+  </section>
+  <section class="about" id="about">
+    <h2>关于我们</h2>
+    <p>星河科技成立于2020年，总部位于深圳。我们拥有一支充满热情的工程师团队，专注于人工智能、云计算和移动互联网领域，已服务超过200家企业客户，帮助他们实现数字化转型与业务增长。</p>
+  </section>
+  <section class="services" id="services">
+    <h2>我们的服务</h2>
+    <div class="cards">
+      <div class="card">
+        <div class="icon">🤖</div>
+        <h3>AI 解决方案</h3>
+        <p>定制化人工智能模型，赋能业务流程自动化与智能决策。</p>
+      </div>
+      <div class="card">
+        <div class="icon">☁️</div>
+        <h3>云端架构</h3>
+        <p>稳定、弹性的云服务架构，保障业务 7x24 小时高可用运行。</p>
+      </div>
+      <div class="card">
+        <div class="icon">📱</div>
+        <h3>移动开发</h3>
+        <p>iOS 和 Android 双端开发，打造流畅的用户体验。</p>
+      </div>
+    </div>
+  </section>
+  <section class="contact" id="contact">
+    <h2>联系我们</h2>
+    <p>📧 hello@xinghekeji.com</p>
+    <p>📍 深圳市南山区科技园 A 栋 8 楼</p>
+    <p>📞 400-888-0000</p>
+  </section>
+  <footer>
+    <p>© 2026 星河科技 All Rights Reserved.</p>
+  </footer>
+</body>
+</html>
